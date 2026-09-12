@@ -1,19 +1,48 @@
 import { createRoot } from "react-dom/client";
 
-//import Styling CSS APP
+// ==========================================================
+// Start Styling CSS APP
+// ==========================================================
+
 import "./index.css";
 
-//import component App
+// ==========================================================
+// End Styling CSS APP
+// ==========================================================
+
+// ==========================================================
+// Start Components
+// ==========================================================
+
 import App from "./App.jsx";
 
-//import ContextProvider
+// ==========================================================
+// End Components
+// ==========================================================
+
+// ==========================================================
+// Start Context Providers
+// ==========================================================
+
 import ReducerContextProvider from "./Context/ReducerContextProvider.jsx";
 import TostContextProvider from "./Context/TostContextProvider.jsx";
+
+// ==========================================================
+// End Context Providers
+// ==========================================================
+
+// ==========================================================
+// Start Render App
+// ==========================================================
 
 createRoot(document.getElementById("root")).render(
   <ReducerContextProvider>
     <TostContextProvider>
       <App />
     </TostContextProvider>
-  </ReducerContextProvider>
+  </ReducerContextProvider>,
 );
+
+// ==========================================================
+// End Render App
+// ==========================================================

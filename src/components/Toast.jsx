@@ -1,34 +1,51 @@
-//import Hook UseState In React
 import { useContext } from "react";
 
-//import Component CheckCircleOutlineIcon In icons-material
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
-//import ContextProsvider ToastValue
 import ToastValue from "../Context/ToastContext";
 
-//Component Toast
+// ==========================================================
+// Start Component Toast
+// ==========================================================
+
 export default function Toast() {
-  //InVoke Value is ToastValue ContextProvider
   const { toast, AlertName } = useContext(ToastValue);
 
   return (
     <>
-      {/* Start Component Toast UI */}
-      <div className={toast ? "flex" : "hidden"}>
-        <div className="toast px-5 py-2 rounded flex items-center justify-center gap-1 bg-green-600 text-white">
-          {/**/}
-          {/* Component CheckCircleOutlineIcon In icons-material */}
-          <CheckCircleOutlineIcon className="" />
-          {/**/}
+      {/* ========================================================== */}
+      {/* Start Toast UI */}
+      {/* ========================================================== */}
 
-          {/* ///////////////////////////////////////////////////////////////////////// */}
-          {/* ///////////////////////////////////////////////////////////////////////// */}
+      <div
+        className={
+          toast
+            ? "fixed top-0 left-1/2 z-[9999] block -translate-x-1/2"
+            : "hidden"
+        }
+      >
+        <div
+          className="toast mt-5 flex items-center justify-center gap-3 rounded-2xl border px-6 py-3 shadow-2xl"
+          style={{
+            background: "var(--color-success)",
+            color: "var(--color-text)",
+            borderColor: "var(--color-border)",
+            boxShadow: "0 20px 40px var(--shadow-primary)",
+          }}
+        >
+          <CheckCircleOutlineIcon />
 
-          <h2 className="text-xl font-bold font-serif">{AlertName}</h2>
+          <h2 className="text-base font-bold sm:text-lg">{AlertName}</h2>
         </div>
       </div>
-      {/* End Component Toast UI */}
+
+      {/* ========================================================== */}
+      {/* End Toast UI */}
+      {/* ========================================================== */}
     </>
   );
 }
+
+// ==========================================================
+// End Component Toast
+// ==========================================================

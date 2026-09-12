@@ -1,98 +1,617 @@
-/* Start Global Components */
+/* ========================================================== */
+/* Start Tailwind */
+/* ========================================================== */
 
-/* import Tailwind CSS */
 @import "tailwindcss";
 
-body {
-  background-color: black;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+/* ========================================================== */
+/* End Tailwind */
+/* ========================================================== */
+
+/* ========================================================== */
+/* Start Root Themes */
+/* ========================================================== */
+
+/* ========================================================== */
+/* Start Theme 2 - Ocean Blue - OK */
+/* ========================================================== */
+
+/*
+:root {
+  --color-primary: #0ea5e9;
+  --color-primary-hover: #0284c7;
+  --color-secondary: #06b6d4;
+
+  --color-success: #10b981;
+  --color-danger: #f43f5e;
+  --color-warning: #f59e0b;
+
+  --color-bg: #06111b;
+  --color-bg-secondary: #0a1724;
+  --color-card: #0d1d2d;
+  --color-card-hover: #12283b;
+  --color-input: #0a1825;
+
+  --color-text: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #64748b;
+
+  --color-border: rgba(14, 165, 233, 0.12);
+  --color-border-hover: rgba(14, 165, 233, 0.45);
+
+  --shadow-primary: rgba(14, 165, 233, 0.25);
+  --shadow-card: rgba(0, 0, 0, 0.35);
+
+  --gradient-primary: linear-gradient(135deg, #0ea5e9, #0369a1);
+
+  --gradient-background:
+    radial-gradient(
+      circle at top right,
+      rgba(14, 165, 233, 0.2),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(6, 182, 212, 0.1),
+      transparent 30%
+    );
+}
+*/
+
+/* ========================================================== */
+/* End Theme 2 - Ocean Blue */
+/* ========================================================== */
+
+/* ========================================================== */
+/* Start Theme 3 - Emerald - NO */
+/* ========================================================== */
+
+/*
+:root {
+  --color-primary: #10b981;
+  --color-primary-hover: #059669;
+  --color-secondary: #14b8a6;
+
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+  --color-warning: #eab308;
+
+  --color-bg: #06120f;
+  --color-bg-secondary: #0a1c17;
+  --color-card: #0d241d;
+  --color-card-hover: #123128;
+  --color-input: #091a15;
+
+  --color-text: #ecfdf5;
+  --color-text-secondary: #d1fae5;
+  --color-text-muted: #6b8f83;
+
+  --color-border: rgba(16, 185, 129, 0.12);
+  --color-border-hover: rgba(16, 185, 129, 0.45);
+
+  --shadow-primary: rgba(16, 185, 129, 0.25);
+  --shadow-card: rgba(0, 0, 0, 0.35);
+
+  --gradient-primary: linear-gradient(135deg, #10b981, #047857);
+
+  --gradient-background:
+    radial-gradient(
+      circle at top right,
+      rgba(16, 185, 129, 0.18),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(20, 184, 166, 0.1),
+      transparent 30%
+    );
+}
+*/
+
+/* ========================================================== */
+/* End Theme 3 - Emerald */
+/* ========================================================== */
+
+/* ========================================================== */
+/* Start Theme 4 - Sunset - OK */
+/* ========================================================== */
+
+/* :root {
+  --color-primary: #f97316;
+  --color-primary-hover: #ea580c;
+  --color-secondary: #f43f5e;
+
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+  --color-warning: #facc15;
+
+  --color-bg: #140b07;
+  --color-bg-secondary: #21100a;
+  --color-card: #2a140c;
+  --color-card-hover: #37190e;
+  --color-input: #1d0e08;
+
+  --color-text: #fff7ed;
+  --color-text-secondary: #fed7aa;
+  --color-text-muted: #a16207;
+
+  --color-border: rgba(249, 115, 22, 0.13);
+  --color-border-hover: rgba(249, 115, 22, 0.5);
+
+  --shadow-primary: rgba(249, 115, 22, 0.25);
+  --shadow-card: rgba(0, 0, 0, 0.35);
+
+  --gradient-primary: linear-gradient(135deg, #f97316, #ea580c);
+
+  --gradient-background:
+    radial-gradient(
+      circle at top right,
+      rgba(249, 115, 22, 0.2),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(244, 63, 94, 0.1),
+      transparent 30%
+    );
+} */
+
+/* ========================================================== */
+/* End Theme 4 - Sunset */
+/* ========================================================== */
+
+/* ========================================================== */
+/* Start Theme 5 - Cyber Pink - Ok */
+/* ========================================================== */
+
+:root {
+  --color-primary: #ec4899;
+  --color-primary-hover: #db2777;
+  --color-secondary: #a855f7;
+
+  --color-success: #22c55e;
+  --color-danger: #f43f5e;
+  --color-warning: #eab308;
+
+  --color-bg: #120612;
+  --color-bg-secondary: #1d0a1e;
+  --color-card: #28102a;
+  --color-card-hover: #351438;
+  --color-input: #1b0a1d;
+
+  --color-text: #fdf4ff;
+  --color-text-secondary: #f5d0fe;
+  --color-text-muted: #a855a8;
+
+  --color-border: rgba(236, 72, 153, 0.14);
+  --color-border-hover: rgba(236, 72, 153, 0.5);
+
+  --shadow-primary: rgba(236, 72, 153, 0.3);
+  --shadow-card: rgba(0, 0, 0, 0.4);
+
+  --gradient-primary: linear-gradient(135deg, #ec4899, #9333ea);
+
+  --gradient-background:
+    radial-gradient(
+      circle at top right,
+      rgba(236, 72, 153, 0.2),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(168, 85, 247, 0.12),
+      transparent 30%
+    );
 }
 
-/* End Global Components */
+/* ========================================================== */
+/* End Theme 5 - Cyber Pink */
+/* ========================================================== */
 
-/* ///////////////////////////////////////////////////////////// */
-/* ///////////////////////////////////////////////////////////// */
-/* ///////////////////////////////////////////////////////////// */
-/* ///////////////////////////////////////////////////////////// */
-/* ///////////////////////////////////////////////////////////// */
+/* ========================================================== */
+/* Start Theme 6 - Royal Indigo */
+/* ========================================================== */
 
-/* Start Toast Component */
+/*
+:root {
+  --color-primary: #6366f1;
+  --color-primary-hover: #4f46e5;
+  --color-secondary: #8b5cf6;
+
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+  --color-warning: #f59e0b;
+
+  --color-bg: #080a18;
+  --color-bg-secondary: #101329;
+  --color-card: #171b35;
+  --color-card-hover: #1d2343;
+  --color-input: #101329;
+
+  --color-text: #eef2ff;
+  --color-text-secondary: #c7d2fe;
+  --color-text-muted: #818cf8;
+
+  --color-border: rgba(99, 102, 241, 0.14);
+  --color-border-hover: rgba(99, 102, 241, 0.5);
+
+  --shadow-primary: rgba(99, 102, 241, 0.28);
+  --shadow-card: rgba(0, 0, 0, 0.35);
+
+  --gradient-primary: linear-gradient(135deg, #6366f1, #4f46e5);
+
+  --gradient-background:
+    radial-gradient(
+      circle at top right,
+      rgba(99, 102, 241, 0.2),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(139, 92, 246, 0.1),
+      transparent 30%
+    );
+}
+*/
+
+/* ========================================================== */
+/* End Theme 6 - Royal Indigo */
+/* ========================================================== */
+
+/* ========================================================== */
+/* Start Theme 7 - Crimson */
+/* ========================================================== */
+
+/*
+:root {
+  --color-primary: #ef4444;
+  --color-primary-hover: #dc2626;
+  --color-secondary: #f43f5e;
+
+  --color-success: #22c55e;
+  --color-danger: #f87171;
+  --color-warning: #f59e0b;
+
+  --color-bg: #140707;
+  --color-bg-secondary: #210b0b;
+  --color-card: #2b1010;
+  --color-card-hover: #391414;
+  --color-input: #1c0b0b;
+
+  --color-text: #fff1f2;
+  --color-text-secondary: #fecdd3;
+  --color-text-muted: #a8646d;
+
+  --color-border: rgba(239, 68, 68, 0.13);
+  --color-border-hover: rgba(239, 68, 68, 0.5);
+
+  --shadow-primary: rgba(239, 68, 68, 0.28);
+  --shadow-card: rgba(0, 0, 0, 0.4);
+
+  --gradient-primary: linear-gradient(135deg, #ef4444, #b91c1c);
+
+  --gradient-background:
+    radial-gradient(
+      circle at top right,
+      rgba(239, 68, 68, 0.2),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(244, 63, 94, 0.1),
+      transparent 30%
+    );
+}
+*/
+
+/* ========================================================== */
+/* End Theme 7 - Crimson */
+/* ========================================================== */
+
+/* ========================================================== */
+/* Start Theme 8 - Arctic */
+/* ========================================================== */
+
+/*
+:root {
+  --color-primary: #22d3ee;
+  --color-primary-hover: #06b6d4;
+  --color-secondary: #38bdf8;
+
+  --color-success: #34d399;
+  --color-danger: #fb7185;
+  --color-warning: #fbbf24;
+
+  --color-bg: #061014;
+  --color-bg-secondary: #0a1920;
+  --color-card: #0e222b;
+  --color-card-hover: #12303b;
+  --color-input: #0a1a21;
+
+  --color-text: #ecfeff;
+  --color-text-secondary: #cffafe;
+  --color-text-muted: #67a5ad;
+
+  --color-border: rgba(34, 211, 238, 0.13);
+  --color-border-hover: rgba(34, 211, 238, 0.5);
+
+  --shadow-primary: rgba(34, 211, 238, 0.28);
+  --shadow-card: rgba(0, 0, 0, 0.4);
+
+  --gradient-primary: linear-gradient(135deg, #22d3ee, #0891b2);
+
+  --gradient-background:
+    radial-gradient(
+      circle at top right,
+      rgba(34, 211, 238, 0.2),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(56, 189, 248, 0.1),
+      transparent 30%
+    );
+}
+*/
+
+/* ========================================================== */
+/* End Theme 8 - Arctic */
+/* ========================================================== */
+
+/* ========================================================== */
+/* Start Theme 9 - Golden - OK */
+/* ========================================================== */
+
+/*
+:root {
+  --color-primary: #f59e0b;
+  --color-primary-hover: #d97706;
+  --color-secondary: #f97316;
+
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+  --color-warning: #facc15;
+
+  --color-bg: #120d04;
+  --color-bg-secondary: #1e1608;
+  --color-card: #2a1e0b;
+  --color-card-hover: #38280e;
+  --color-input: #1b1407;
+
+  --color-text: #fffbeb;
+  --color-text-secondary: #fde68a;
+  --color-text-muted: #a78b45;
+
+  --color-border: rgba(245, 158, 11, 0.14);
+  --color-border-hover: rgba(245, 158, 11, 0.5);
+
+  --shadow-primary: rgba(245, 158, 11, 0.28);
+  --shadow-card: rgba(0, 0, 0, 0.4);
+
+  --gradient-primary: linear-gradient(135deg, #f59e0b, #d97706);
+
+  --gradient-background:
+    radial-gradient(
+      circle at top right,
+      rgba(245, 158, 11, 0.2),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(249, 115, 22, 0.1),
+      transparent 30%
+    );
+}
+*/
+
+/* ========================================================== */
+/* End Theme 9 - Golden */
+/* ========================================================== */
+
+/* ========================================================== */
+/* Start Theme 10 - Tropical */
+/* ========================================================== */
+
+/*
+:root {
+  --color-primary: #14b8a6;
+  --color-primary-hover: #0d9488;
+  --color-secondary: #84cc16;
+
+  --color-success: #22c55e;
+  --color-danger: #f43f5e;
+  --color-warning: #eab308;
+
+  --color-bg: #05110f;
+  --color-bg-secondary: #091c18;
+  --color-card: #0d2822;
+  --color-card-hover: #12352e;
+  --color-input: #081b17;
+
+  --color-text: #f0fdfa;
+  --color-text-secondary: #ccfbf1;
+  --color-text-muted: #5e9187;
+
+  --color-border: rgba(20, 184, 166, 0.14);
+  --color-border-hover: rgba(20, 184, 166, 0.5);
+
+  --shadow-primary: rgba(20, 184, 166, 0.28);
+  --shadow-card: rgba(0, 0, 0, 0.4);
+
+  --gradient-primary: linear-gradient(135deg, #14b8a6, #0f766e);
+
+  --gradient-background:
+    radial-gradient(
+      circle at top right,
+      rgba(20, 184, 166, 0.2),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(132, 204, 22, 0.1),
+      transparent 30%
+    );
+}
+*/
+
+/* ========================================================== */
+/* End Theme 10 - Tropical */
+/* ========================================================== */
+
+/* ========================================================== */
+/* End Root Themes */
+/* ========================================================== */
+
+/* ========================================================== */
+/* Start Global */
+/* ========================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  min-width: 320px;
+  min-height: 100vh;
+
+  font-family: Inter, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  color: var(--color-text);
+
+  background: var(--gradient-background), var(--color-bg);
+
+  transition:
+    background 0.35s ease,
+    color 0.35s ease;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+/* ========================================================== */
+/* End Global */
+/* ========================================================== */
+
+/* ========================================================== */
+/* Start Scrollbar */
+/* ========================================================== */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-hover);
+}
+
+/* ========================================================== */
+/* End Scrollbar */
+/* ========================================================== */
+
+/* ========================================================== */
+/* Start Todo Card */
+/* ========================================================== */
+
+.todo-card {
+  background: var(--color-card);
+
+  border-color: var(--color-border);
+
+  transition:
+    transform 0.25s ease,
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.25s ease;
+}
+
+.todo-card:hover {
+  transform: translateY(-2px);
+
+  background: var(--color-card-hover);
+
+  border-color: var(--color-border-hover);
+
+  box-shadow: 0 15px 35px var(--shadow-card);
+}
+
+/* ========================================================== */
+/* End Todo Card */
+/* ========================================================== */
+
+/* ========================================================== */
+/* Start Todo Action */
+/* ========================================================== */
+
+.todo-action {
+  transition:
+    transform 0.2s ease,
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.todo-action:hover {
+  transform: scale(1.08);
+}
+
+/* ========================================================== */
+/* End Todo Action */
+/* ========================================================== */
+
+/* ========================================================== */
+/* Start Toast */
+/* ========================================================== */
 
 .toast {
   width: fit-content;
+
   margin: auto;
+
   transform: translateY(-100px);
-  animation: identifier 3s;
-  -webkit-animation: identifier 3s;
-  -webkit-transform: translateY(-100px);
-  -moz-transform: translateY(-100px);
-  -ms-transform: translateY(-100px);
-  -o-transform: translateY(-100px);
+
+  animation: toastAnimation 3s ease;
 }
 
-@keyframes identifier {
+@keyframes toastAnimation {
   0% {
+    opacity: 0;
     transform: translateY(-100px);
-    -webkit-transform: translateY(-100px);
-    -moz-transform: translateY(-100px);
-    -ms-transform: translateY(-100px);
-    -o-transform: translateY(-100px);
   }
+
+  20% {
+    opacity: 1;
+    transform: translateY(25px);
+  }
+
   50% {
-    transform: translateY(50px);
-    -webkit-transform: translateY(50px);
-    -moz-transform: translateY(50px);
-    -ms-transform: translateY(50px);
-    -o-transform: translateY(50px);
+    opacity: 1;
+    transform: translateY(25px);
   }
+
   100% {
+    opacity: 0;
     transform: translateY(-100px);
-    -webkit-transform: translateY(-100px);
-    -moz-transform: translateY(-100px);
-    -ms-transform: translateY(-100px);
-    -o-transform: translateY(-100px);
   }
 }
 
-/* End Toast Component */
-
-/* ///////////////////////////////////////////////////////////// */
-/* ///////////////////////////////////////////////////////////// */
-/* ///////////////////////////////////////////////////////////// */
-/* ///////////////////////////////////////////////////////////// */
-/* ///////////////////////////////////////////////////////////// */
-
-/* Start Component CardTodoList */
-.Card {
-  max-height: 90vh;
-  overflow: scroll;
-}
-/* End Component CardTodoList */
-
-/* ///////////////////////////////////////////////////////////// */
-/* ///////////////////////////////////////////////////////////// */
-/* ///////////////////////////////////////////////////////////// */
-/* ///////////////////////////////////////////////////////////// */
-/* ///////////////////////////////////////////////////////////// */
-
-/* Start Component ToDo And TodoList */
-
-.flex,
-.Icons {
-  transition: all 1s linear;
-  -webkit-transition: all 1s linear;
-  -moz-transition: all 1s linear;
-  -ms-transition: all 1s linear;
-  -o-transition: all 1s linear;
-}
-
-#btnAdd {
-  transition: all 1.8s ease;
-  -webkit-transition: all 1.8s ease;
-  -moz-transition: all 1.8s ease;
-  -ms-transition: all 1.8s ease;
-  -o-transition: all 1.8s ease;
-}
-
-/* End Component ToDo And TodoList */
+/* ========================================================== */
+/* End Toast */
+/* ========================================================== */

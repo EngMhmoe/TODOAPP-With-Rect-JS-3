@@ -1,46 +1,94 @@
-//import Component ToDo
 import ToDo from "./ToDo";
 
-//import Component Card In material-UI
 import Card from "@mui/material/Card";
-//import Component Divider In material-UI
-import { Divider } from "@mui/material";
 
-//Component CardTodoList
+// ==========================================================
+// Start Component CardTodoList
+// ==========================================================
+
 export default function CardTodoList() {
   return (
     <>
-      {/* Start Component CardTodoList UI */}
-      <Card sx={{ minWidth: 275 }} className="mt-10 h-150">
-        <div className="Card py-3 shadow">
-          {/* Title Card CardTodoList*/}
-          <h1
-            className="text-6xl font-bold text-center"
-            style={{ fontFamily: "ui-monospace" }}
-          >
-            مهامى
-          </h1>
+      {/* ========================================================== */}
+      {/* Start CardTodoList UI */}
+      {/* ========================================================== */}
 
-          {/* /////////////////////////////////////////////////////////////////////// */}
-          {/* /////////////////////////////////////////////////////////////////////// */}
-          {/* /////////////////////////////////////////////////////////////////////// */}
-          {/* /////////////////////////////////////////////////////////////////////// */}
-          {/* /////////////////////////////////////////////////////////////////////// */}
+      <Card
+        elevation={0}
+        sx={{
+          background: "transparent",
+          boxShadow: "none",
+          overflow: "visible",
+        }}
+      >
+        <div
+          className="rounded-4xl border p-4 sm:p-6 shadow-2xl"
+          style={{
+            background: "var(--color-card)",
+            borderColor: "var(--color-border)",
+            boxShadow: "0 20px 50px var(--shadow-card)",
+          }}
+        >
+          {/* ========================================================== */}
+          {/* Start Card Header */}
+          {/* ========================================================== */}
 
-          {/* Component Divider */}
-          <Divider component="li" />
+          <div className="mb-6 flex items-center justify-between">
+            <div>
+              <h2
+                className="text-2xl font-black sm:text-3xl"
+                style={{
+                  color: "var(--color-text)",
+                }}
+              >
+                مهامي
+              </h2>
 
-          {/* /////////////////////////////////////////////////////////////////////// */}
-          {/* /////////////////////////////////////////////////////////////////////// */}
-          {/* /////////////////////////////////////////////////////////////////////// */}
-          {/* /////////////////////////////////////////////////////////////////////// */}
-          {/* /////////////////////////////////////////////////////////////////////// */}
+              <p
+                className="mt-1 font-bold text-lg"
+                style={{
+                  color: "var(--color-text-muted)",
+                }}
+              >
+                أضف مهامك وابدأ في إنجازها
+              </p>
+            </div>
 
-          {/* Component ToDo */}
+            <div
+              className="flex h-12 w-12 text-3xl font-extrabold items-center justify-center rounded-full"
+              style={{
+                background:
+                  "color-mix(in srgb, var(--color-primary) 10%, transparent)",
+                color: "var(--color-primary)",
+              }}
+            >
+              ✓
+            </div>
+          </div>
+
+          {/* ========================================================== */}
+          {/* End Card Header */}
+          {/* ========================================================== */}
+
+          {/* ========================================================== */}
+          {/* Start ToDo */}
+          {/* ========================================================== */}
+
           <ToDo />
+
+          {/* ========================================================== */}
+          {/* End ToDo */}
+          {/* ========================================================== */}
         </div>
       </Card>
-      {/* End Component CardTodoList UI */}
+
+      {/* ========================================================== */}
+      {/* End CardTodoList UI */}
+      {/* ========================================================== */}
     </>
   );
 }
+
+// ==========================================================
+// End Component CardTodoList
+// ==========================================================

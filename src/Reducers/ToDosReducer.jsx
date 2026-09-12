@@ -1,6 +1,15 @@
 import { v4 as uuidv4 } from "uuid";
+
+// ==========================================================
+// Start ToDos Reducer
+// ==========================================================
+
 export default function ToDosReducer(CurrentToDos, action) {
   switch (action.type) {
+    // ========================================================== */
+    // Start Added
+    // ========================================================== */
+
     case "added": {
       const NewToDoListAllData = {
         id: uuidv4(),
@@ -11,42 +20,67 @@ export default function ToDosReducer(CurrentToDos, action) {
 
       const UpdateUseToDoListAllData = [...CurrentToDos, NewToDoListAllData];
 
-      //Save useToDoListAllData in localStorage
+      // Save useToDoListAllData in localStorage
       localStorage.setItem(
         "UseToDoListAllData",
-        JSON.stringify(UpdateUseToDoListAllData)
+        JSON.stringify(UpdateUseToDoListAllData),
       );
 
       return UpdateUseToDoListAllData;
     }
+
+    // ========================================================== */
+    // End Added
+    // ========================================================== */
+
+    // ========================================================== */
+    // Start Deleted
+    // ========================================================== */
 
     case "deleted": {
       const FilterDeleteToDo = CurrentToDos.filter((el, i) => {
         return action.payload.SelectIndex !== i;
       });
 
-      //Save useToDoListAllData in localStorage
+      // Save useToDoListAllData in localStorage
       localStorage.setItem(
         "UseToDoListAllData",
-        JSON.stringify(FilterDeleteToDo)
+        JSON.stringify(FilterDeleteToDo),
       );
 
       return FilterDeleteToDo;
     }
 
+    // ========================================================== */
+    // End Deleted
+    // ========================================================== */
+
+    // ========================================================== */
+    // Start Update
+    // ========================================================== */
+
     case "AddNewToDoUpdate": {
       const Edite = CurrentToDos;
+
       Edite.splice(
         action.payload.selectIndexUpdate,
         1,
-        action.payload.ValueUpdateToDoModal
+        action.payload.ValueUpdateToDoModal,
       );
 
-      //Save useToDoListAllData in localStorage
+      // Save useToDoListAllData in localStorage
       localStorage.setItem("UseToDoListAllData", JSON.stringify(Edite));
 
       return Edite;
     }
+
+    // ========================================================== */
+    // End Update
+    // ========================================================== */
+
+    // ========================================================== */
+    // Start Completed
+    // ========================================================== */
 
     case "Completed": {
       const UpdateToDo = CurrentToDos.map((el, i) => {
@@ -61,11 +95,19 @@ export default function ToDosReducer(CurrentToDos, action) {
         return el;
       });
 
-      //Save useToDoListAllData in localStorage
+      // Save useToDoListAllData in localStorage
       localStorage.setItem("UseToDoListAllData", JSON.stringify(UpdateToDo));
 
       return UpdateToDo;
     }
+
+    // ========================================================== */
+    // End Completed
+    // ========================================================== */
+
+    // ========================================================== */
+    // Start Get Local Storage
+    // ========================================================== */
 
     case "GetInLocalStorage": {
       const StorageUseToDoListAllData =
@@ -74,10 +116,24 @@ export default function ToDosReducer(CurrentToDos, action) {
       return StorageUseToDoListAllData;
     }
 
+    // ========================================================== */
+    // End Get Local Storage
+    // ========================================================== */
+
+    // ========================================================== */
+    // Start Default
+    // ========================================================== */
+
     default: {
       throw Error("UnKnown Action", action.type);
     }
-  }
 
-  //   return [];
+    // ========================================================== */
+    // End Default
+    // ========================================================== */
+  }
 }
+
+// ==========================================================
+// End ToDos Reducer
+// ==========================================================
