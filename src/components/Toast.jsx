@@ -1,22 +1,19 @@
+// Import React Hooks
 import { useContext } from "react";
 
+// Import Material UI Icons
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
+// Import Context
 import ToastValue from "../Context/ToastContext";
 
-// ==========================================================
-// Start Component Toast
-// ==========================================================
-
 export default function Toast() {
+  // Get Toast Context Values
   const { toast, AlertName } = useContext(ToastValue);
 
   return (
     <>
-      {/* ========================================================== */}
       {/* Start Toast UI */}
-      {/* ========================================================== */}
-
       <div
         className={
           toast
@@ -38,10 +35,6 @@ export default function Toast() {
           <h2 className="text-base font-bold sm:text-lg">{AlertName}</h2>
         </div>
       </div>
-
-      {/* ========================================================== */}
-      {/* End Toast UI */}
-      {/* ========================================================== */}
     </>
   );
 }

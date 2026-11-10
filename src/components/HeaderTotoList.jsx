@@ -1,24 +1,27 @@
+// Import React Hooks
 import { useContext } from "react";
 
+// Import Material UI Icons
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
 
+// Import Context
 import ReducerContext from "../Context/ReducerContext";
 
-// ==========================================================
-// Start Component Header Todo List
-// ==========================================================
-
 export default function HeaderTotoList() {
+  // Get To-Do List Data from Reducer Context
   const { useToDoListAllData } = useContext(ReducerContext);
 
+  // Calculate Total Tasks
   const TotalTasks = useToDoListAllData.length;
 
+  // Calculate Completed Tasks
   const CompletedTasks = useToDoListAllData.filter(
     (todo) => todo.isCompleted === true,
   ).length;
 
+  // Calculate Remaining Tasks
   const RemainingTasks = useToDoListAllData.filter(
     (todo) => todo.isCompleted === false,
   ).length;
@@ -30,9 +33,7 @@ export default function HeaderTotoList() {
       {/* ========================================================== */}
 
       <header className="text-center">
-        {/* ========================================================== */}
         {/* Start Title */}
-        {/* ========================================================== */}
         <div className="mx-auto flex max-w-2xl flex-col items-center">
           <div
             className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl border shadow-lg"
@@ -70,19 +71,13 @@ export default function HeaderTotoList() {
           </p>
         </div>
 
-        {/* ========================================================== */}
-        {/* End Title */}
-        {/* ========================================================== */}
+        {/* //////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* //////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* //////////////////////////////////////////////////////////////////////////////////////// */}
 
-        {/* ========================================================== */}
         {/* Start Statistics */}
-        {/* ========================================================== */}
-
         <div className="mx-auto my-10 grid max-w-2xl grid-cols-3 gap-5 font-bold">
-          {/* ========================================================== */}
           {/* Start Total */}
-          {/* ========================================================== */}
-
           <div
             className="rounded-2xl border p-4"
             style={{
@@ -109,14 +104,10 @@ export default function HeaderTotoList() {
             </p>
           </div>
 
-          {/* ========================================================== */}
-          {/* End Total */}
-          {/* ========================================================== */}
+          {/* ///////////////////////////////////////////////////////////////// */}
+          {/* ///////////////////////////////////////////////////////////////// */}
 
-          {/* ========================================================== */}
           {/* Start Completed */}
-          {/* ========================================================== */}
-
           <div
             className="rounded-2xl border p-4 "
             style={{
@@ -153,14 +144,10 @@ export default function HeaderTotoList() {
             </p>
           </div>
 
-          {/* ========================================================== */}
-          {/* End Completed */}
-          {/* ========================================================== */}
+          {/* ///////////////////////////////////////////////////////////////// */}
+          {/* ///////////////////////////////////////////////////////////////// */}
 
-          {/* ========================================================== */}
           {/* Start Remaining */}
-          {/* ========================================================== */}
-
           <div
             className="rounded-2xl border p-4"
             style={{
@@ -196,24 +183,8 @@ export default function HeaderTotoList() {
               {RemainingTasks}
             </p>
           </div>
-
-          {/* ========================================================== */}
-          {/* End Remaining */}
-          {/* ========================================================== */}
         </div>
-
-        {/* ========================================================== */}
-        {/* End Statistics */}
-        {/* ========================================================== */}
       </header>
-
-      {/* ========================================================== */}
-      {/* End Header UI */}
-      {/* ========================================================== */}
     </>
   );
 }
-
-// ==========================================================
-// End Component Header Todo List
-// ==========================================================

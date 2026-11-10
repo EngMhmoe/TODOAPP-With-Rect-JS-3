@@ -1,28 +1,17 @@
+// Import React Hooks
 import { useReducer } from "react";
 
+// Import Context
 import ReducerContext from "./ReducerContext";
 
+// Import Reducer Function
 import ToDosReducer from "../Reducers/ToDosReducer";
 
-// ==========================================================
-// Start Component Reducer Context Provider
-// ==========================================================
-
 export default function ReducerContextProvider({ children }) {
-  // ========================================================== */
-  // Start ToDo List Data
-  // ========================================================== */
-
+  // Initialize To-Do List State and Reducer Dispatch
   const [useToDoListAllData, Dispatch] = useReducer(ToDosReducer, []);
 
-  // ========================================================== */
-  // End ToDo List Data
-  // ========================================================== */
-
-  // ========================================================== */
-  // Start Provider
-  // ========================================================== */
-
+  // Provide To-Do List State and Dispatch to Child Components
   return (
     <ReducerContext.Provider
       value={{
@@ -33,12 +22,4 @@ export default function ReducerContextProvider({ children }) {
       {children}
     </ReducerContext.Provider>
   );
-
-  // ========================================================== */
-  // End Provider
-  // ========================================================== */
 }
-
-// ==========================================================
-// End Component Reducer Context Provider
-// ==========================================================

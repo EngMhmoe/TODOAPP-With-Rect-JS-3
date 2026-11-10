@@ -1,13 +1,8 @@
+// Import React Context
 import { createContext } from "react";
 
-// ==========================================================
-// Start Toast Context
-// ==========================================================
-
+// Create Toast Context
 const ToastValue = createContext();
 
-// ==========================================================
-// End Toast Context
-// ==========================================================
-
+// Export Toast Context
 export default ToastValue;

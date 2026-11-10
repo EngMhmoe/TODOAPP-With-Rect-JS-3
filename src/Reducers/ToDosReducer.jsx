@@ -1,16 +1,10 @@
+// Import UUID Generator
 import { v4 as uuidv4 } from "uuid";
-
-// ==========================================================
-// Start ToDos Reducer
-// ==========================================================
 
 export default function ToDosReducer(CurrentToDos, action) {
   switch (action.type) {
-    // ========================================================== */
-    // Start Added
-    // ========================================================== */
-
     case "added": {
+      // Create New To-Do Task
       const NewToDoListAllData = {
         id: uuidv4(),
         NameToDo: "المهمه",
@@ -18,9 +12,10 @@ export default function ToDosReducer(CurrentToDos, action) {
         isCompleted: false,
       };
 
+      // Update To-Do List with New Task
       const UpdateUseToDoListAllData = [...CurrentToDos, NewToDoListAllData];
 
-      // Save useToDoListAllData in localStorage
+      // Save Updated To-Do List to Local Storage
       localStorage.setItem(
         "UseToDoListAllData",
         JSON.stringify(UpdateUseToDoListAllData),
@@ -29,20 +24,16 @@ export default function ToDosReducer(CurrentToDos, action) {
       return UpdateUseToDoListAllData;
     }
 
-    // ========================================================== */
-    // End Added
-    // ========================================================== */
-
-    // ========================================================== */
-    // Start Deleted
-    // ========================================================== */
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     case "deleted": {
+      // Filter Out the Selected To-Do Task
       const FilterDeleteToDo = CurrentToDos.filter((el, i) => {
         return action.payload.SelectIndex !== i;
       });
 
-      // Save useToDoListAllData in localStorage
+      // Save Updated To-Do List to Local Storage
       localStorage.setItem(
         "UseToDoListAllData",
         JSON.stringify(FilterDeleteToDo),
@@ -51,38 +42,31 @@ export default function ToDosReducer(CurrentToDos, action) {
       return FilterDeleteToDo;
     }
 
-    // ========================================================== */
-    // End Deleted
-    // ========================================================== */
-
-    // ========================================================== */
-    // Start Update
-    // ========================================================== */
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     case "AddNewToDoUpdate": {
+      // Get Current To-Do List
       const Edite = CurrentToDos;
 
+      // Replace Selected To-Do with Updated Data
       Edite.splice(
         action.payload.selectIndexUpdate,
         1,
         action.payload.ValueUpdateToDoModal,
       );
 
-      // Save useToDoListAllData in localStorage
+      // Save Updated To-Do List to Local Storage
       localStorage.setItem("UseToDoListAllData", JSON.stringify(Edite));
 
       return Edite;
     }
 
-    // ========================================================== */
-    // End Update
-    // ========================================================== */
-
-    // ========================================================== */
-    // Start Completed
-    // ========================================================== */
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     case "Completed": {
+      // Toggle To-Do Completion Status
       const UpdateToDo = CurrentToDos.map((el, i) => {
         if (action.payload.selectIndex == i) {
           if (el.isCompleted == false) {
@@ -95,45 +79,29 @@ export default function ToDosReducer(CurrentToDos, action) {
         return el;
       });
 
-      // Save useToDoListAllData in localStorage
+      // Save Updated To-Do List to Local Storage
       localStorage.setItem("UseToDoListAllData", JSON.stringify(UpdateToDo));
 
       return UpdateToDo;
     }
 
-    // ========================================================== */
-    // End Completed
-    // ========================================================== */
-
-    // ========================================================== */
-    // Start Get Local Storage
-    // ========================================================== */
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     case "GetInLocalStorage": {
+      // Retrieve To-Do List Data from Local Storage
       const StorageUseToDoListAllData =
         JSON.parse(localStorage.getItem("UseToDoListAllData")) ?? [];
 
       return StorageUseToDoListAllData;
     }
 
-    // ========================================================== */
-    // End Get Local Storage
-    // ========================================================== */
-
-    // ========================================================== */
-    // Start Default
-    // ========================================================== */
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     default: {
+      // Handle Unknown Actions
       throw Error("UnKnown Action", action.type);
     }
-
-    // ========================================================== */
-    // End Default
-    // ========================================================== */
   }
 }
-
-// ==========================================================
-// End ToDos Reducer
-// ==========================================================

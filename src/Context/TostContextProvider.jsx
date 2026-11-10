@@ -1,28 +1,17 @@
+// Import React Hooks
 import { useState } from "react";
 
+// Import Toast Context
 import ToastValue from "./ToastContext";
 
-// ==========================================================
-// Start Component Toast Context Provider
-// ==========================================================
-
 export default function TostContextProvider({ children }) {
-  // ========================================================== */
-  // Start Toast States
-  // ========================================================== */
-
+  // Manage Toast Visibility State
   const [toast, setToast] = useState(false);
 
+  // Manage Toast Alert Message
   const [AlertName, setAlertName] = useState("تمت الاضافه");
 
-  // ========================================================== */
-  // End Toast States
-  // ========================================================== */
-
-  // ========================================================== */
-  // Start Provider
-  // ========================================================== */
-
+  // Provide Toast Context Values to Child Components
   return (
     <ToastValue.Provider
       value={{
@@ -35,12 +24,4 @@ export default function TostContextProvider({ children }) {
       {children}
     </ToastValue.Provider>
   );
-
-  // ========================================================== */
-  // End Provider
-  // ========================================================== */
 }
-
-// ==========================================================
-// End Component Toast Context Provider
-// ==========================================================

@@ -1,13 +1,8 @@
+// Import React Context
 import { createContext } from "react";
 
-// ==========================================================
-// Start Reducer Context
-// ==========================================================
-
+// Create Reducer Context
 const ReducerContext = createContext();
 
-// ==========================================================
-// End Reducer Context
-// ==========================================================
-
+// Export Reducer Context
 export default ReducerContext;

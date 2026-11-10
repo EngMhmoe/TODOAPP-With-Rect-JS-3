@@ -1,9 +1,5 @@
+// Import Material UI Components
 import IconButton from "@mui/material/IconButton";
-
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import CreateIcon from "@mui/icons-material/Create";
-import CheckIcon from "@mui/icons-material/Check";
-import AddIcon from "@mui/icons-material/Add";
 
 import {
   Button,
@@ -17,50 +13,71 @@ import {
   ToggleButtonGroup,
 } from "@mui/material";
 
-import React, { useContext, useEffect, useState } from "react";
+// Import Material UI Icons
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import CreateIcon from "@mui/icons-material/Create";
+import CheckIcon from "@mui/icons-material/Check";
+import AddIcon from "@mui/icons-material/Add";
 
+// Import React Hooks
+import { useContext, useEffect, useState } from "react";
+
+// Import UUID
 import { v4 as uuidv4 } from "uuid";
 
+// Import Context
 import ToastValue from "../Context/ToastContext";
 import ReducerContext from "../Context/ReducerContext";
 
-// ==========================================================
-// Start Component ToDo
-// ==========================================================
-
 export default function ToDo() {
-  // ==========================================================
-  // Start Context
-  // ==========================================================
-
+  // Get To-Do List Data and Dispatch from Reducer Context
   const { useToDoListAllData, Dispatch } = useContext(ReducerContext);
 
+  // Get Toast Functions from Toast Context
   const { setToast, setAlertName } = useContext(ToastValue);
 
-  // ==========================================================
-  // End Context
-  // ==========================================================
-
-  // ==========================================================
-  // Start Add ToDo States
-  // ==========================================================
-
+  // Manage New To-Do Input Value
   const [ValueNewToDo, setValueNewToDo] = useState("");
 
+  // Manage Input Validation State
   const [CheckedValueInput, setCheckedValueInput] = useState({
     error: false,
     label: "تفاصيل المهمه",
   });
 
-  // ==========================================================
-  // End Add ToDo States
-  // ==========================================================
+  // Manage Add/Edit Dialog State
+  const [open, setOpen] = useState({
+    is: false,
+    select: "",
+  });
 
-  // ==========================================================
-  // Start Add New ToDo
-  // ==========================================================
+  // Manage Update To-Do Modal Data
+  const [ValueUpdateToDoModal, setValueUpdateToDoModal] = useState({});
 
+  // Store Selected To-Do Index for Update
+  const [selectIndexUpdate, setSelectIndexUpdate] = useState(null);
+
+  // Manage Delete Confirmation Dialog State
+  const [open2, setOpen2] = useState({
+    is: false,
+    select: "",
+  });
+
+  // Manage To-Do List Display Filter
+  const [displayedToDosType, setDisplayedToDosType] = useState("all");
+
+  // Store To-Do List Data for Rendering
+  let TodosToBeRendered = useToDoListAllData;
+
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+  // Handle Adding a New To-Do Task
   function AddNewToDo() {
+    // Validate New To-Do Input
     if (ValueNewToDo === "") {
       setCheckedValueInput({
         error: true,
@@ -70,6 +87,7 @@ export default function ToDo() {
       return;
     }
 
+    // Dispatch Action to Add New To-Do
     Dispatch({
       type: "added",
       payload: {
@@ -77,45 +95,30 @@ export default function ToDo() {
       },
     });
 
+    // Reset Input Validation State
     setCheckedValueInput({
       error: false,
       label: "تفاصيل المهمه",
     });
 
+    // Clear New To-Do Input
     setValueNewToDo("");
 
+    // Show Success Toast Notification
     setToast(true);
 
+    // Hide Toast Notification After 2 Seconds
     setTimeout(() => {
       setToast(false);
     }, 2000);
   }
 
-  // ==========================================================
-  // End Add New ToDo
-  // ==========================================================
-
-  // ==========================================================
-  // Start Delete ToDo States
-  // ==========================================================
-
-  const [open, setOpen] = useState({
-    is: false,
-    select: "",
-  });
-
-  // ==========================================================
-  // End Delete ToDo States
-  // ==========================================================
-
-  // ==========================================================
-  // Start Delete ToDo
-  // ==========================================================
-
+  // Handle Opening Delete Confirmation Modal
   function ShowModalDeleteToDo(selectIndex) {
     handleClickOpen(selectIndex);
   }
 
+  // Set Selected To-Do and Open Delete Modal
   const handleClickOpen = (selectIndex) => {
     setOpen({
       ...open,
@@ -124,13 +127,17 @@ export default function ToDo() {
     });
   };
 
+  // Handle Closing Delete Confirmation Modal
   const handleClose = () => {
     setOpen(false);
   };
 
+  // Handle Deleting a To-Do Task
   function DeleteToDo() {
+    // Close Delete Confirmation Modal
     handleClose();
 
+    // Dispatch Action to Delete Selected To-Do
     Dispatch({
       type: "deleted",
       payload: {
@@ -138,43 +145,23 @@ export default function ToDo() {
       },
     });
 
+    // Show Success Toast Notification
     setToast(true);
 
+    // Hide Toast Notification After 2 Seconds
     setTimeout(() => {
       setToast(false);
     }, 2000);
 
+    // Set Success Alert Message
     setAlertName("تم الحزف بنجاح");
   }
 
-  // ==========================================================
-  // End Delete ToDo
-  // ==========================================================
-
-  // ==========================================================
-  // Start Update ToDo States
-  // ==========================================================
-
-  const [ValueUpdateToDoModal, setValueUpdateToDoModal] = useState({});
-
-  const [selectIndexUpdate, setSelectIndexUpdate] = useState(null);
-
-  const [open2, setOpen2] = useState({
-    is: false,
-    select: "",
-  });
-
-  // ==========================================================
-  // End Update ToDo States
-  // ==========================================================
-
-  // ==========================================================
-  // Start Update ToDo
-  // ==========================================================
-
+  // Handle Opening Update To-Do Modal
   function UpDAteToDO(selectIndex) {
     handleClickOpen2();
 
+    // Create New Object with Selected To-Do Data
     const NewObjectUpdateToDoModal = {
       id: uuidv4(),
       NameToDo: useToDoListAllData[selectIndex].NameToDo,
@@ -182,11 +169,14 @@ export default function ToDo() {
       isCompleted: false,
     };
 
+    // Set Selected To-Do Data in Update Modal
     setValueUpdateToDoModal(NewObjectUpdateToDoModal);
 
+    // Store Selected To-Do Index
     setSelectIndexUpdate(selectIndex);
   }
 
+  // Set Selected To-Do and Open Update Modal
   const handleClickOpen2 = (selectIndex) => {
     setOpen2({
       ...open2,
@@ -195,7 +185,9 @@ export default function ToDo() {
     });
   };
 
+  // Handle Updating an Existing To-Do Task
   function AddNewToDoUpdate() {
+    // Dispatch Action to Update Selected To-Do
     Dispatch({
       type: "AddNewToDoUpdate",
       payload: {
@@ -204,30 +196,28 @@ export default function ToDo() {
       },
     });
 
+    // Show Success Toast Notification
     setToast(true);
 
+    // Hide Toast Notification After 2 Seconds
     setTimeout(() => {
       setToast(false);
     }, 2000);
 
+    // Set Success Alert Message
     setAlertName("تم العديل بنجاح");
   }
 
+  // Handle Closing Update To-Do Modal
   const handleClose2 = () => {
     AddNewToDoUpdate();
 
     setOpen2(false);
   };
 
-  // ==========================================================
-  // End Update ToDo
-  // ==========================================================
-
-  // ==========================================================
-  // Start Completed
-  // ==========================================================
-
+  // Handle Completing a To-Do Task
   function Completed(selectIndex) {
+    // Dispatch Action to Update To-Do Completion Status
     Dispatch({
       type: "Completed",
       payload: {
@@ -235,49 +225,48 @@ export default function ToDo() {
       },
     });
 
+    // Show Success Toast Notification
     setToast(true);
 
+    // Hide Toast Notification After 2 Seconds
     setTimeout(() => {
       setToast(false);
     }, 2000);
 
+    // Set Success Alert Message
     setAlertName("تم تحديث حالة المهمة بنجاح");
   }
 
-  // ==========================================================
-  // End Completed
-  // ==========================================================
+  // Handle To-Do List Filter Change
+  const handleFilterChange = (event, newValue) => {
+    if (newValue !== null) {
+      setDisplayedToDosType(newValue);
+    }
+  };
 
-  // ==========================================================
-  // Start Local Storage
-  // ==========================================================
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-  useEffect(() => {
-    Dispatch({
-      type: "GetInLocalStorage",
-    });
-  }, []);
-
-  // ==========================================================
-  // End Local Storage
-  // ==========================================================
-
-  // ==========================================================
-  // Start Filter
-  // ==========================================================
-
-  const [displayedToDosType, setDisplayedToDosType] = useState("all");
-
-  let TodosToBeRendered = useToDoListAllData;
-
+  // Filter Completed To-Do Tasks
   const FilterCompleted = useToDoListAllData.filter((el) => {
     return el.isCompleted === true;
   });
 
+  // Filter Remaining To-Do Tasks
   const FilterNonCompleted = useToDoListAllData.filter((el) => {
     return el.isCompleted === false;
   });
 
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+  // Apply Selected Filter to To-Do List
   if (displayedToDosType === "completed") {
     TodosToBeRendered = FilterCompleted;
   } else if (displayedToDosType === "non-completed") {
@@ -286,34 +275,27 @@ export default function ToDo() {
     TodosToBeRendered;
   }
 
-  // ==========================================================
-  // End Filter
-  // ==========================================================
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-  // ==========================================================
-  // Start Filter Change
-  // ==========================================================
-
-  const handleFilterChange = (event, newValue) => {
-    if (newValue !== null) {
-      setDisplayedToDosType(newValue);
-    }
-  };
-
-  // ==========================================================
-  // End Filter Change
-  // ==========================================================
+  // Load To-Do List Data from Local Storage on Component Mount
+  useEffect(() => {
+    Dispatch({
+      type: "GetInLocalStorage",
+    });
+  }, []);
 
   return (
     <>
       {/* ========================================================== */}
       {/* Start ToDo UI */}
       {/* ========================================================== */}
-      <div className="space-y-6">
-        {/* ========================================================== */}
-        {/* Start Add ToDo */}
-        {/* ========================================================== */}
 
+      <div className="space-y-6">
+        {/* Start Add ToDo */}
         <div
           className="rounded-2xl border p-3 sm:p-4 shadow-inner"
           style={{
@@ -389,14 +371,11 @@ export default function ToDo() {
           </div>
         </div>
 
-        {/* ========================================================== */}
-        {/* End Add ToDo */}
-        {/* ========================================================== */}
+        {/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */}
 
-        {/* ========================================================== */}
         {/* Start Filters */}
-        {/* ========================================================== */}
-
         <div className="flex justify-center">
           <ToggleButtonGroup
             value={displayedToDosType}
@@ -440,14 +419,11 @@ export default function ToDo() {
           </ToggleButtonGroup>
         </div>
 
-        {/* ========================================================== */}
-        {/* End Filters */}
-        {/* ========================================================== */}
+        {/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */}
 
-        {/* ========================================================== */}
         {/* Start Todo List */}
-        {/* ========================================================== */}
-
         <div className="space-y-6">
           {TodosToBeRendered.length === 0 ? (
             <div
@@ -501,10 +477,7 @@ export default function ToDo() {
                     : "var(--color-border)",
                 }}
               >
-                {/* ========================================================== */}
                 {/* Start Todo Content */}
-                {/* ========================================================== */}
-
                 <div className="min-w-0 flex-1">
                   <div className="flex items-start gap-3">
                     <div
@@ -551,19 +524,13 @@ export default function ToDo() {
                   </div>
                 </div>
 
-                {/* ========================================================== */}
-                {/* End Todo Content */}
-                {/* ========================================================== */}
+                {/* ////////////////////////////////////////////////////////////////////////////////// */}
+                {/* ////////////////////////////////////////////////////////////////////////////////// */}
+                {/* ////////////////////////////////////////////////////////////////////////////////// */}
 
-                {/* ========================================================== */}
                 {/* Start Todo Actions */}
-                {/* ========================================================== */}
-
                 <div className="flex shrink-0 items-center justify-end gap-6">
-                  {/* ========================================================== */}
                   {/* Start Complete */}
-                  {/* ========================================================== */}
-
                   <div
                     className="todo-action rounded-xl"
                     style={{
@@ -590,14 +557,10 @@ export default function ToDo() {
                     </IconButton>
                   </div>
 
-                  {/* ========================================================== */}
-                  {/* End Complete */}
-                  {/* ========================================================== */}
+                  {/* /////////////////////////////////////////////////////////////////////// */}
+                  {/* /////////////////////////////////////////////////////////////////////// */}
 
-                  {/* ========================================================== */}
                   {/* Start Update */}
-                  {/* ========================================================== */}
-
                   <div
                     className="todo-action rounded-xl"
                     style={{
@@ -621,14 +584,10 @@ export default function ToDo() {
                     </IconButton>
                   </div>
 
-                  {/* ========================================================== */}
-                  {/* End Update */}
-                  {/* ========================================================== */}
+                  {/* /////////////////////////////////////////////////////////////////////// */}
+                  {/* /////////////////////////////////////////////////////////////////////// */}
 
-                  {/* ========================================================== */}
                   {/* Start Delete */}
-                  {/* ========================================================== */}
-
                   <div
                     className="todo-action rounded-xl"
                     style={{
@@ -651,28 +610,17 @@ export default function ToDo() {
                       />
                     </IconButton>
                   </div>
-
-                  {/* ========================================================== */}
-                  {/* End Delete */}
-                  {/* ========================================================== */}
                 </div>
-
-                {/* ========================================================== */}
-                {/* End Todo Actions */}
-                {/* ========================================================== */}
               </div>
             ))
           )}
         </div>
 
-        {/* ========================================================== */}
-        {/* End Todo List */}
-        {/* ========================================================== */}
+        {/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */}
 
-        {/* ========================================================== */}
         {/* Start Delete Dialog */}
-        {/* ========================================================== */}
-
         <Dialog
           dir="rtl"
           open={open.is}
@@ -750,14 +698,11 @@ export default function ToDo() {
           </DialogActions>
         </Dialog>
 
-        {/* ========================================================== */}
-        {/* End Delete Dialog */}
-        {/* ========================================================== */}
+        {/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */}
 
-        {/* ========================================================== */}
         {/* Start Update Dialog */}
-        {/* ========================================================== */}
-
         <Dialog
           dir="rtl"
           open={open2.is}
@@ -924,19 +869,7 @@ export default function ToDo() {
             </Button>
           </DialogActions>
         </Dialog>
-
-        {/* ========================================================== */}
-        {/* End Update Dialog */}
-        {/* ========================================================== */}
       </div>
-
-      {/* ========================================================== */}
-      {/* End ToDo UI */}
-      {/* ========================================================== */}
     </>
   );
 }
-
-// ==========================================================
-// End Component ToDo
-// ==========================================================
